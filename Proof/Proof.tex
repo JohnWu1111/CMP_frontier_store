@@ -1,0 +1,223 @@
+\documentclass[prb,superscriptaddress,letter,10pt,onecolumn]{revtex4}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{epsfig}
+\usepackage{dcolumn}
+\usepackage{bm}
+\usepackage{bm}
+\usepackage{blindtext}
+\usepackage{natbib}
+\usepackage{epstopdf}
+\usepackage{ulem}
+\usepackage{url}
+\usepackage{bm}
+\usepackage{subfigure}
+
+
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\bea{\begin{eqnarray}}
+\def\eea{\end{eqnarray}}
+\def\erf{\eqref}
+\def\ba{\begin{aligned}}
+\def\ea{\end{aligned}}
+\def\erf{\eqref}
+\def\arccosh{\text{arccosh}}
+\def\d{\text{d}}
+
+\newcommand{\comment}[1]{{\color{red}\textit{#1}}}
+\newcommand{\cancel}[1]{{\color{blue}\sout{#1}}}
+\newcommand{\msout}[1]{\text{\sout{\ensuremath{#1}}}}
+\newcommand{\expct}[1]{\left\langle #1 \right\rangle}
+\newcommand{\expcts}[1]{\langle #1 \rangle}
+\newcommand{\ud}          {\mathrm d}
+\newcommand\eps           {\varepsilon}
+\newcommand\w           {\omega}
+\newcommand\fii           {\varphi}
+\newcommand\mc            {\mathcal}
+\newcommand\LL            {Lieb--Liniger }
+\newcommand\p             {\partial}
+\newcommand\psid          {\psi^{\dagger}}
+\renewcommand\th          {\theta}
+\newcommand\kb            {k_\text{B}}
+\newcommand \rhop       {\rho^{\text{(r)}}}
+\newcommand{\cev}[1]   {\langle#1|}
+\newcommand\red[1]{{\color{red}{#1}}}
+\newcommand\blue[1]{{\color{blue}{#1}}}
+\newcommand{\vt}{\vartheta}
+\newcommand{\vev}[1]{\left\langle #1 \right\rangle}
+
+\begin{document}
+\title{Proof of a Possible Form of Green Function on 1D lattice system}
+\author{Shuohang Wu}
+\affiliation{Wilczek Quantum Center, School of Physics \& Astronomy, Shanghai Jiao Tong University, Shanghai, 200240, China, 020072910056}
+
+\maketitle
+
+\section{Statement}
+
+For a system constrained on a one demesional chain with length $L$, define annihilation operator for the i-th point as $C_i$ and creation operator as $C_i^\dagger$.
+For a single particle, there are $L$ independet eigenstate $\left|E_k\right>$, with corresponding eigenenergy $E_k$.
+We can write
+\begin{equation}
+	\left|E_k\right> = U^{-1}\left|i\right>,
+	\left|i\right> = U\left|E_k\right>,
+\end{equation}
+where $\left|n\right>$ denotes the occupied state at n-th point.
+Assume the unitary transformation matrix $U$ takes the form
+\begin{equation}
+	U =       	
+	\left(                 	
+	\begin{array}{cccc}   		
+		a_{k_11} & a_{k_21} & \cdots & a_{k_L1}\\  		
+		a_{k_12} & a_{k_22} & \cdots & a_{k_L2}\\
+		\vdots & \ddots &  & \\
+		a_{k_1L} & a_{k_2L} & \cdots & a_{k_LL}\\  		
+	\end{array}	
+	\right),         	
+\end{equation}
+and
+\begin{equation}
+	\left|E_k\right> = C_k^\dagger\left|0\right>,
+	\left|i\right> = C_i^\dagger\left|0\right>,
+\end{equation}
+then the transformations of the annihilation operator and creation operator are
+\begin{equation}
+	C_i = \sum_{k}a_{ki} C_k,
+	C_i^\dagger = \sum_{k}a_{ki}^* C_k^\dagger
+\end{equation}
+
+Generally, the Green function for the correlation between the i-th and the j-th point can be written as
+\begin{equation}
+	G_{ij} = \left< C_i^\dagger C_j \right>.
+\end{equation}
+We can PROVE that for an N-particle ground states ($N\le L$), a possible form of the Green function is
+\begin{equation}
+	G = 
+	\left(                 	
+	\begin{array}{cccc}   		
+		a_{k_11}^* & a_{k_21}^* & \cdots & a_{k_N1}^*\\  		
+		a_{k_12}^* & a_{k_22}^* & \cdots & a_{k_N2}^*\\
+		\vdots & \ddots &  & \\
+		a_{k_1L}^* & a_{k_2L}^* & \cdots & a_{k_NL}^*\\  		
+	\end{array}	
+	\right)_{L\times N}
+	\left( 
+	\begin{array}{cccc}   		
+		a_{k_11} & a_{k_12} & \cdots & a_{k_1L}\\  		
+		a_{k_21} & a_{k_22} & \cdots & a_{k_2L}\\
+		\vdots & \ddots &  & \\
+		a_{k_N1} & a_{k_N2} & \cdots & a_{k_NL}\\  		
+	\end{array}	
+	\right)_{N\times L}.
+\end{equation}
+
+\section{Lemma}
+
+To prove the statement above, we introduce the Wick's theorem as follow.
+\begin{equation}
+	\left< C_1C_2\dots C_{2N-1}C_{2N} \right> = \sum_{P} sgn(P)\left< C_iC_j\right>\left< C_kC_l\right>\cdots\left< C_mC_n\right>,
+\end{equation}
+where N is an integer and the right-hand-side of the equation takes the sum of all combinations of expetation value of two operators. $\{i,j,k,l,\cdots,m,n\}$ is any permutation of $\{1,2,\cdots,2N-1,2N\}$, and $sgn(P)$ denotes the sign of the permutation, while the relative position bewteen any annihilation and creation operator pair should be preserved.
+Here the operators can be annihilation or creation.
+Obviously for a non-zero result the left-hand-side should be both of number $N$ and any $\left< C_iC_j\right>$ shoubld contains one annihilation and one creation operator.
+
+For example, if the state is a vaccum state and $N=2$, the Wick's theorem shows that
+\begin{equation}
+	\left< C_1 C_2 C_3^\dagger C_4^\dagger \right> =
+	-\left< C_1 C_3^\dagger\right>\left< C_2 C_4^\dagger\right>
+	+\left< C_1 C_4^\dagger\right>\left< C_2 C_3^\dagger\right>, 
+	\left< C_1 C_2^\dagger C_3 C_4^\dagger \right> =
+	\left< C_1 C_2^\dagger\right>\left< C_3 C_4^\dagger\right>.
+\end{equation}
+
+\section{Proof}
+
+The $L=1$ case can be easily proved using relations of annihilation and creation operators, without using Wick's Theorem.
+Now we prove the case for $L=2$.
+A two-particle eigenstate can be written as
+\begin{equation}
+	\left|E\right> = C_{k_1}^\dagger C_{k_2}^\dagger\left|0\right>.
+\end{equation}
+Then the Green function can be wriiten as
+\begin{equation}
+	G_{ij} = 
+	\left< 0 \left| C_{k_2}C_{k_1}  C_i^\dagger C_j
+	C_{k_1}^\dagger C_{k_2}^\dagger\right|0\right>.
+\end{equation}
+After performing unitary transformation on $C_i^\dagger$ and $C_j$, that is
+\begin{equation}
+	C_j = \sum_{k^{'}}a_{k^{'}j} C_{k^{'}},
+	C_i^\dagger = \sum_{k}a_{ki}^* C_k^\dagger,
+\end{equation}
+the Green function becomes
+\begin{equation}
+	G_{ij} = \sum_{kk^{'}} a_{ki}^* a_{k^{'}j}
+	\left< 0 \left| C_{k_2}C_{k_1}  C_k^\dagger C_{k^{'}}
+	C_{k_1}^\dagger C_{k_2}^\dagger \right|0\right>.
+\end{equation}
+Use Wick's theorem and notice the fact that
+\begin{equation}
+	\left< 0 \left| C_m C_n^\dagger \right| 0 \right> = \delta_{mn},
+\end{equation}
+which leads to two zero terms, so
+\begin{equation}
+	\begin{aligned}
+	&\left< 0 \right| C_{k_2}C_{k_1}  C_k^\dagger C_{k^{'}}
+	C_{k_1}^\dagger C_{k_2}^\dagger\left|0\right> \\
+	= &\left< 0 \right| C_{k_2} C_k^\dagger \left| 0 \right>
+	\left< 0 \right| C_{k_1} C_{k_1}^\dagger \left| 0 \right>
+	\left< 0 \right| C_{k^{'}} C_{k_2}^\dagger \left| 0 \right> \\
+	&+ \left< 0 \right| C_{k_2} C_{k_2}^\dagger \left| 0 \right> 
+	\left< 0 \right| C_{k_1} C_{k}^\dagger \left| 0 \right>
+	\left< 0 \right| C_{k^{'}} C_{k_1}^\dagger \left| 0 \right> \\
+	= & \quad\delta_{k_2 k} \delta_{k^{'}k_2} + \delta_{k_1 k} \delta_{k^{'}k_1}.
+	\end{aligned}		
+\end{equation}
+Thus the Green function becomes
+\begin{equation}
+	G_{ij} = a_{k_1i}^* a_{k_1j} + a_{k_2i}^* a_{k_2j},
+\end{equation}
+which can be also written as
+\begin{equation}
+	G = 
+	\left(                 	
+	\begin{array}{cc}   		
+		a_{k_11}^* & a_{k_21}^* \\  		
+		a_{k_12}^* & a_{k_22}^* \\
+		\vdots & \vdots \\
+		a_{k_1L}^* & a_{k_2L}^* \\  		
+	\end{array}	
+	\right)_{L\times 2}
+	\left( 
+	\begin{array}{cccc}   		
+		a_{k_11} & a_{k_12} & \cdots & a_{k_1L}\\  		
+		a_{k_21} & a_{k_22} & \cdots & a_{k_2L}\\	
+	\end{array}	
+	\right)_{2\times L}
+	(QED.).
+\end{equation}
+
+For the cases of $N>2$, similar process can be followed.
+
+%\newpage
+%\bibliography{main}
+%\bibliographystyle{apsrev-nourl}
+
+
+%\newpage
+
+%\appendix
+
+\onecolumngrid
+%\setcounter{figure}{0}
+%\makeatletter
+%\renewcommand{\thefigure}{S\@arabic\c@figure}
+%\setcounter{equation}{0} \makeatletter
+%\renewcommand \theequation{S\@arabic\c@equation}
+%\section*{{ \Large Supplementary Material --- Spin dynamics of a perturbed quantum critical Ising chain with an $E_8$ symmetry}}
+
+
+\end{document}
