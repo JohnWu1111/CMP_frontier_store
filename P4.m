@@ -9,8 +9,8 @@ len = 2^L;
 H = zeros(len,len);
 I = eye(2);
 K = [1 0; 0 -1];
-C = [0 0; 1 0];
-C_dag = [0 1; 0 0];
+C_dag = [0 0; 1 0];
+C = [0 1; 0 0];
 
 % pos=1单独赋值
 H1 = C_dag; 
