@@ -19,28 +19,6 @@ H1(L,L) = -U;
 
 [V,D] = eig(H1);
 
-H2 = zeros(L,L);
-k = zeros(1,L);
-temp = zeros(1,L);
-
-for i = 1:L
-    k(i) = 2*pi*i/L;
-    temp(i) = -2*J*cos(k(i))-U;
-end
-
-for i = 1:L
-    for j = i:L
-        if (temp(i)>temp(j))
-            tem = temp(i);
-            temp(i) = temp(j);
-            temp(j) = tem;
-            tem = k(i);
-            k(i) = k(j);
-            k(j) = tem;
-        end
-    end
-end
-
 % syms tt
 t = 0:dt:10;
 % G = zeros(L,L);
@@ -56,17 +34,20 @@ num = zeros(L,len);
 % axis([0 9 0 3])
 
 G = zeros(L,L);
+tar = zeros(len,1);
 for i = 1:L
     G(i,i) = phi0(i);
     num(i,1) = G(i,i);
+    tar(1) = tar(1) + (-1)^i*num(i,1);
 end
 
-for n = 2:len
-    trans = expm(-1i*H1*dt);
+trans = expm(-1i*H1*dt);
+for n = 2:len   
     G = trans*G*trans';
     
     for i = 1:L
         num(i,n) = G(i,i);
+        tar(n) = tar(n) + (-1)^i*num(i,n);
     end
     
 %     set(bart,'Ydata',abs(num(:,n)));
@@ -74,5 +55,6 @@ for n = 2:len
 %     pause(0.05)
 end
 
+
 figure;
-plot(t,abs(num(1,:)));
+plot(t,tar);
