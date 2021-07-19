@@ -60,7 +60,7 @@
 \section{Statement}
 
 For a lattice system of any dimension with total size (number of lattice point) $L$, define annihilation operator as $C_i$ and creation operator as $C_i^\dagger$ for the i-th point.
-For a single particle, there are $L$ independet eigenstate $\left|E_k\right>$, with corresponding eigenenergy $E_k$.
+For a single particle, there are $L$ independent eigenstate $\left|E_k\right>$, with corresponding eigenenergy $E_k$.
 We can write
 \begin{equation}
 	\left|E_k\right> = U^{-1}\left|i\right>,
@@ -121,11 +121,11 @@ To prove the statement above, we introduce the Wick's theorem as follow.
 \begin{equation}
 	\left< C_1C_2\dots C_{2N-1}C_{2N} \right> = \sum_{P} sgn(P)\left< C_iC_j\right>\left< C_kC_l\right>\cdots\left< C_mC_n\right>,
 \end{equation}
-where $N$ is an integer and the right-hand-side of the equation takes the sum of all combinations of expetation value for two operators. $\{i,j,k,l,\cdots,m,n\}$ is any permutation of $\{1,2,\cdots,2N-1,2N\}$, and $sgn(P)$ denotes the sign of the permutation, while the relative position bewteen any annihilation and creation operator pair should be preserved.
+where $N$ is an integer and the right-hand-side of the equation takes the sum of all combinations of expectation value for two operators. $\{i,j,k,l,\cdots,m,n\}$ is any permutation of $\{1,2,\cdots,2N-1,2N\}$, and $sgn(P)$ denotes the sign of the permutation, while the relative position between any annihilation and creation operator pair should be preserved.
 Here the operators can be annihilation or creation.
 Obviously for a non-zero result the left-hand-side should be both of number $N$ and any $\left< C_iC_j\right>$ should contains one annihilation and one creation operator.
 
-For example, if the state is a vaccum state and $N=2$, the Wick's theorem shows that
+For example, if the state is a vacuum state and $N=2$, the Wick's theorem shows that
 \begin{equation}
 	\left< C_1 C_2 C_3^\dagger C_4^\dagger \right> =
 	-\left< C_1 C_3^\dagger\right>\left< C_2 C_4^\dagger\right>
@@ -136,13 +136,13 @@ For example, if the state is a vaccum state and $N=2$, the Wick's theorem shows 
 
 \section{Proof}
 
-The $N=1$ case can be easily proved using relations of annihilation and creation operators, without using Wick's Theorem.
+The $N=1$ case can be easily proved using relations of annihilation and creation operators, without using Wick's theorem.
 Now we prove the case for $N=2$.
 A two-particle eigenstate can be written as
 \begin{equation}
 	\left|E\right> = C_{k_1}^\dagger C_{k_2}^\dagger\left|0\right>.
 \end{equation}
-Then the Green function can be wriiten as
+Then the Green function can be written as
 \begin{equation}
 	G_{ij} = 
 	\left< 0 \left| C_{k_2}C_{k_1}  C_i^\dagger C_j
