@@ -1,3 +1,4 @@
+% !TeX spellcheck = en_US
 \documentclass[prb,superscriptaddress,letter,10pt,onecolumn]{revtex4}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -50,7 +51,7 @@
 \newcommand{\vev}[1]{\left\langle #1 \right\rangle}
 
 \begin{document}
-\title{Proof of a Possible Form of Green Function on 1D lattice system}
+\title{Proof of a Possible Form of Green Function on a lattice system}
 \author{Shuohang Wu}
 \affiliation{Wilczek Quantum Center, School of Physics \& Astronomy, Shanghai Jiao Tong University, Shanghai, 200240, China, 020072910056}
 
@@ -58,7 +59,7 @@
 
 \section{Statement}
 
-For a system constrained on a one demesional chain with length $L$, define annihilation operator for the i-th point as $C_i$ and creation operator as $C_i^\dagger$.
+For a lattice system of any dimension with total size (number of lattice point) $L$, define annihilation operator as $C_i$ and creation operator as $C_i^\dagger$ for the i-th point.
 For a single particle, there are $L$ independet eigenstate $\left|E_k\right>$, with corresponding eigenenergy $E_k$.
 We can write
 \begin{equation}
@@ -89,7 +90,7 @@ then the transformations of the annihilation operator and creation operator are
 	C_i^\dagger = \sum_{k}a_{ki}^* C_k^\dagger
 \end{equation}
 
-Generally, the Green function for the correlation between the i-th and the j-th point can be written as
+Generally, the Green function for the correlation between the i-th and j-th point can be written as
 \begin{equation}
 	G_{ij} = \left< C_i^\dagger C_j \right>.
 \end{equation}
@@ -120,9 +121,9 @@ To prove the statement above, we introduce the Wick's theorem as follow.
 \begin{equation}
 	\left< C_1C_2\dots C_{2N-1}C_{2N} \right> = \sum_{P} sgn(P)\left< C_iC_j\right>\left< C_kC_l\right>\cdots\left< C_mC_n\right>,
 \end{equation}
-where N is an integer and the right-hand-side of the equation takes the sum of all combinations of expetation value of two operators. $\{i,j,k,l,\cdots,m,n\}$ is any permutation of $\{1,2,\cdots,2N-1,2N\}$, and $sgn(P)$ denotes the sign of the permutation, while the relative position bewteen any annihilation and creation operator pair should be preserved.
+where $N$ is an integer and the right-hand-side of the equation takes the sum of all combinations of expetation value for two operators. $\{i,j,k,l,\cdots,m,n\}$ is any permutation of $\{1,2,\cdots,2N-1,2N\}$, and $sgn(P)$ denotes the sign of the permutation, while the relative position bewteen any annihilation and creation operator pair should be preserved.
 Here the operators can be annihilation or creation.
-Obviously for a non-zero result the left-hand-side should be both of number $N$ and any $\left< C_iC_j\right>$ shoubld contains one annihilation and one creation operator.
+Obviously for a non-zero result the left-hand-side should be both of number $N$ and any $\left< C_iC_j\right>$ should contains one annihilation and one creation operator.
 
 For example, if the state is a vaccum state and $N=2$, the Wick's theorem shows that
 \begin{equation}
@@ -135,8 +136,8 @@ For example, if the state is a vaccum state and $N=2$, the Wick's theorem shows 
 
 \section{Proof}
 
-The $L=1$ case can be easily proved using relations of annihilation and creation operators, without using Wick's Theorem.
-Now we prove the case for $L=2$.
+The $N=1$ case can be easily proved using relations of annihilation and creation operators, without using Wick's Theorem.
+Now we prove the case for $N=2$.
 A two-particle eigenstate can be written as
 \begin{equation}
 	\left|E\right> = C_{k_1}^\dagger C_{k_2}^\dagger\left|0\right>.
