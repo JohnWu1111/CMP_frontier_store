@@ -1,4 +1,4 @@
-% calculation of (-1)^i*n_i
+% calculation of (-1)^i*n_i, with time-dependent pertubation
 tic;
 J = 1;
 U = 0.1;
@@ -9,28 +9,24 @@ lt = length(t);
 G0 = [1 -1; -1 1]./2;
 tar = zeros(length(L),lt);
 
+ww = 1;
+dd = 0.1;
+
 for m = 1:length(L)
     k = zeros(1,L(m)/2);
     Hk = zeros(1,L(m)/2);
-    Tev = zeros(2,2,L(m)/2);
 
     for i = 1:(L(m)/2)
         k(i) = 2*pi*i/L(m) - pi/2;
         Hk(i) = 2*J*cos(k(i));
     end
     
-    for i = 1:(L(m)/2)
-        H = [-Hk(i) 0; 0 Hk(i)];
-        Tev(:,:,i) = expm(-1i*H*dt);
-        tar(m,1) = tar(m,1) + G0(1,2) + G0(2,1);
-    end
-    Tevt = Tev;
-    
-    for n = 2:lt
+    for n = 1:lt
         for i = 1:(L(m)/2)
-%             H = [-Hk(i) 0; 0 Hk(i)];
-            Tevt(:,:,i) = Tevt(:,:,i)*Tev(:,:,i);
-            G = Tevt(:,:,i)'*G0*Tevt(:,:,i);
+            coeff = dd*cos(ww*t(n));
+            H = [-Hk(i) coeff; coeff Hk(i)];
+            Tev = expm(-1i*H*t(n));
+            G = Tev'*G0*Tev;
             tar(m,n) = tar(m,n) + G(1,2) + G(2,1);
         end    
     end
