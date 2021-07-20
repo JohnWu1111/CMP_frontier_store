@@ -37,12 +37,14 @@ for m = 1:length(L)
 
 %     plot(t,real(tar(m,:))./(L(m)/2))
     [w,tarw] = Fourier(t,real(tar(m,:))./(L(m)/2));
-    plot(w(1:500),tarw(1:500))
+    tarw = tarw./sum(tarw);
+    plot(w(1:200),tarw(1:200))
     hold on;
 end
 % plot(t,-besselj(0,4*J*t))
 [w,tarw] = Fourier(t,-besselj(0,4*J*t));
-plot(w(1:500),tarw(1:500))
+tarw = tarw./sum(tarw);
+plot(w(1:200),tarw(1:200))
 legend('L=10','L=20','L=40','L=\infty')
 toc;
 
@@ -54,11 +56,7 @@ function [omega,y] = Fourier(t,x)
     domega = 2*pi/T;
     omega0 = 0;
     omega = zeros(len,1);
-    omega = gpuArray(omega);
     y = zeros(len,1);
-    y = gpuArray(y);
-    x = gpuArray(x);
-    t = gpuArray(t);
     for i = 1:len
         omega(i) = (i-1)*domega + omega0;
         for j = 1:len
@@ -66,6 +64,4 @@ function [omega,y] = Fourier(t,x)
         end 
         y(i) = abs(y(i));
     end
-    omega = gather(omega);
-    y = gather(y);
 end
