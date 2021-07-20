@@ -1,8 +1,10 @@
+% calculation of (-1)^i*n_i
+tic;
 J = 1;
 U = 0.1;
 L = [10 20 40];
 dt = 0.01;
-t = 0:dt:20;
+t = 0:dt:200;
 lt = length(t);
 G0 = [1 -1; -1 1]./2;
 tar = zeros(length(L),lt);
@@ -33,8 +35,37 @@ for m = 1:length(L)
         end    
     end
 
-    plot(t,real(tar(m,:))./(L(m)/2))
+%     plot(t,real(tar(m,:))./(L(m)/2))
+    [w,tarw] = Fourier(t,real(tar(m,:))./(L(m)/2));
+    plot(w(1:500),tarw(1:500))
     hold on;
 end
-plot(t,-besselj(0,4*J*t))
+% plot(t,-besselj(0,4*J*t))
+[w,tarw] = Fourier(t,-besselj(0,4*J*t));
+plot(w(1:500),tarw(1:500))
 legend('L=10','L=20','L=40','L=\infty')
+toc;
+
+function [omega,y] = Fourier(t,x)
+    len = length(t);
+    T = t(end) - t(1);
+%     dt = T/(len-1);
+%     Omega = 2*pi/dt;
+    domega = 2*pi/T;
+    omega0 = 0;
+    omega = zeros(len,1);
+    omega = gpuArray(omega);
+    y = zeros(len,1);
+    y = gpuArray(y);
+    x = gpuArray(x);
+    t = gpuArray(t);
+    for i = 1:len
+        omega(i) = (i-1)*domega + omega0;
+        for j = 1:len
+            y(i) = y(i) + exp(-1i*omega(i)*t(j))*x(j);
+        end 
+        y(i) = abs(y(i));
+    end
+    omega = gather(omega);
+    y = gather(y);
+end
